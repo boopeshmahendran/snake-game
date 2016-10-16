@@ -5,8 +5,8 @@ var gameStart = {
         game.scale.pageAlignVertically = true;
     },
     create: function() {
-        game.stage.backgroundColor = '#FFAB91';
-        var infoText = this.add.text(game.world.centerX, game.world.centerY, 'Snake Game\nClick to Start');
+        game.stage.backgroundColor = '#27ae60';
+        var infoText = this.add.text(game.world.centerX, game.world.centerY, 'Snake Game\nClick to Start', fontStyle);
         infoText.anchor.set(0.5);
         game.input.onDown.add(this.startGame, this);
     },

@@ -17,7 +17,7 @@ var mainGame = {
         this.apple = game.add.sprite(0, 0, 'apple');
         this.apple.visible = false;
         this.score = 0;
-        this.scoreText = game.add.text(10, 10, "");
+        this.scoreText = game.add.text(10, 10, "", fontStyle);
         this.updateXY = {up: {x: 0, y: -1}, down: {x: 0, y: 1}, left: {x: -1, y: 0}, right: {x: 1, y: 0}};
 
         this.createSnake();
