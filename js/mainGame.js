@@ -101,8 +101,8 @@ var mainGame = {
         }
     },
     drawApple: function() {
-        var posX = game.rnd.integerInRange(0, this.width);
-        var posY = game.rnd.integerInRange(0, this.height);
+        var posX = game.rnd.integerInRange(0, this.width - 1);
+        var posY = game.rnd.integerInRange(0, this.height - 1);
         var collidingWithSnake = false;
         for (var i = 0; i < this.snake.length; ++i) {
             if (posX === this.snake[i].x && posY === this.snake[i].y) {
