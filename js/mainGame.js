@@ -47,7 +47,7 @@ var mainGame = {
     },
     checkOutOfWorld: function() {
         var head = this.snake[this.snake.length - 1];
-        if (head.x < 0 || head.x > game.world.width || head.y < 0 || head.y > game.world.height) {
+        if (head.x < 0 || head.x >= game.world.width || head.y < 0 || head.y >= game.world.height) {
             this.gameOver();
         }
     },
