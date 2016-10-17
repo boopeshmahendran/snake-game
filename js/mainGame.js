@@ -7,7 +7,8 @@ var mainGame = {
         // data members
         this.snake = [];
         this.initialSnakeLength = 3;
-        this.squareSize = 15;
+        this.characterScale = 2;
+        this.squareSize = 15 * this.characterScale;
         this.speed = 9;
         this.count = this.speed;
         this.width  = Math.floor(game.world.width / this.squareSize);
@@ -15,6 +16,8 @@ var mainGame = {
         this.cursors = game.input.keyboard.createCursorKeys();
         this.direction = "right";
         this.apple = game.add.sprite(0, 0, 'apple');
+        this.apple.scale.set(this.characterScale);
+        console.log(this.apple.width);
         this.apple.visible = false;
         this.score = 0;
         this.scoreText = game.add.text(10, 10, "", fontStyle);
@@ -57,7 +60,9 @@ var mainGame = {
     },
     createSnake: function() {
         for (var i = 0; i < this.initialSnakeLength; ++i) {
-            this.snake.push(this.add.sprite(game.world.centerX + i * this.squareSize, game.world.centerY, 'snake'));
+            var t = this.add.sprite(game.world.centerX + i * this.squareSize, game.world.centerY, 'snake');
+            t.scale.set(this.characterScale);
+            this.snake.push(t);
         }
     },
     snakeEatApple: function() {
@@ -74,7 +79,9 @@ var mainGame = {
         var tail = this.snake[0];
         var x = this.snake[this.snake.length - 1].x + this.updateXY[this.direction].x * this.squareSize;
         var y = this.snake[this.snake.length - 1].y + this.updateXY[this.direction].y * this.squareSize;
-        this.snake.push(game.add.sprite(x, y, 'snake'));
+        var t = this.add.sprite(x, y, 'snake');
+        t.scale.set(this.characterScale);
+        this.snake.push(t);
     },
     moveSnake: function() {
         --this.count;
