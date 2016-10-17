@@ -87,18 +87,12 @@ var mainGame = {
         }
     },
     updateDirection: function() {
-        if (this.cursors.up.isDown && this.direction != "down") {
-            this.direction = "up";
-        }
-        else if (this.cursors.down.isDown && this.direction != "up") {
-            this.direction = "down";
-        }
-        else if (this.cursors.left.isDown && this.direction != "right") {
-            this.direction = "left";
-        }
-        else if (this.cursors.right.isDown && this.direction != "left") {
-            this.direction = "right";
-        }
+        const opposites = {up: 'down', down: 'up', left: 'right', right: 'left'};
+        const directions = Object.keys(opposites);
+        const isPressed = d => this.cursors[d].isDown;
+        const isValid = d => this.direction != opposites[d];
+        const newDir = directions.find(d => isPressed(d) && isValid(d));
+        if (newDir) this.direction = newDir;
     },
     drawApple: function() {
         var posX = game.rnd.integerInRange(0, this.width - 1);
